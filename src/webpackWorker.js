@@ -202,7 +202,14 @@ module.exports = function(configuratorFileName, options, index, expectedConfigLe
                 if (disconnected) {
                     return;
                 }
-                done(null, options.stats ? JSON.stringify(stats.toJson(outputOptions), null, 2) : '');
+                compiler.close((closeErr) => {
+                    if (closeErr) console.error('Close error occured', closeErr);
+                    cleanup();
+                    if (disconnected) {
+                        return;
+                    }
+                    done(null, options.stats ? JSON.stringify(stats.toJson(outputOptions), null, 2) : '');
+                });
             } else if (!hasCompletedOneCompile) {
                 notifyIPCWatchCompileDone(index);
                 hasCompletedOneCompile = true;

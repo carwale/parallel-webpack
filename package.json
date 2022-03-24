@@ -1,6 +1,6 @@
 {
-  "name": "parallel-webpack",
-  "version": "2.6.0",
+  "name": "cw-parallel-webpack",
+  "version": "2.6.0-cw-1.0",
   "description": "Builds multiple webpack configurations in parallel and allows you to easily create variants to those configurations.",
   "main": "index.js",
   "bin": {
